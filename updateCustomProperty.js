@@ -1,9 +1,4 @@
 export function getCustomeProperty(elem, prop){
-  // console.log(elem);
-  // console.log(prop);
-  // console.log('gets');
-  // console.log(getComputedStyle(elem));
-  // console.log(getComputedStyle(elem).getPropertyValue(prop));
 
   return parseFloat(getComputedStyle(elem).getPropertyValue(prop)) || 0;
 }
