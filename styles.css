@@ -93,5 +93,4 @@ h1{
   left: calc(var(--left) * 1%);
   height: 18%;
   bottom: 132px;
-  transform: rotate(10deg);
 }
