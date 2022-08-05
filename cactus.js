@@ -15,7 +15,6 @@ export function setUpCactus(){
 
 export function updateCactus(delta, speedScale){
   document.querySelectorAll('[data-cactus]').forEach(cactus => {
-    console.log(delta * speedScale * SPEED * - 1);
     incrementCustomProperty(cactus, "--left", delta * speedScale * SPEED * - 1)
 
     if (getCustomProperty(cactus, "--left") <= -100){
