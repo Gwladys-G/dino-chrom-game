@@ -41,7 +41,7 @@ function update(time) {
 
 function updateScore(delta){
   score += delta * 0.01
-  scoreElem.textContent = Math.floor(score)
+  scoreElem.textContent = `--   ${Math.floor(score)}   --`
 }
 
 function updateSpeedScale(delta){

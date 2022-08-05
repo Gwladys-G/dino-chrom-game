@@ -6,24 +6,37 @@
 body {
   margin: 0;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   min-height: 100vh;
-  border: 15px solid pink;
+  border: 3px solid #535353;
+}
+
+h1{
+  color: #535353;
+  position: absolute;
+  font-size: 5vmin;
+  top: 5vmin;
+
+}
+
+
+.start-screen{
+  color: #535353;
 }
 
 .world {
-  /* overflow: hidden; */
+  overflow: hidden;
   position: relative;
-  border: 2px solid blue;
 }
 
 .score {
   position: absolute;
   font-size: 3vmin;
-  right: 1vmin;
+  right: 10vmin;
   top: 1vmin;
-  border: 2px solid yellow;
+  color: #535353;
 }
 
 .start-screen {
@@ -32,7 +45,6 @@ body {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  border: 2px solid green;
 }
 
 .hide {
@@ -45,7 +57,6 @@ body {
   width: 300%;
   bottom: 0;
   left: calc(var(--left) * 1%);
-  border: 2px solid brown;
 }
 
 .dino {

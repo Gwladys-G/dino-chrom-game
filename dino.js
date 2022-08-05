@@ -30,7 +30,6 @@ export function updateDino(delta, speedScale){
 function handleRun(delta, speedScale) {
   if (isJumping){
     dinoElem.src = "imgs/dino-stationary.png"
-    console.log('jumping from handle run');
     return
   }
 
@@ -60,14 +59,13 @@ function handleJump(delta) {
 }
 
 function onJump(e){
-  console.log('jumped');
   if (e.code != "Space" || isJumping) return
-  console.log('its space bar');
   yVelocity = JUMP_SPEED
   isJumping = true
 }
 
 export function getDinoRect(){
+  console.log(dinoElem.getBoundingClientRect());
   return dinoElem.getBoundingClientRect()
 }
 

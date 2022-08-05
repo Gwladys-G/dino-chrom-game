@@ -48,6 +48,7 @@ function randomNumberBetween(min, max){
 
 export function getCactusRecs(){
   return [...document.querySelectorAll("[data-cactus]")].map(cactus => {
+    console.log(cactus.getBoundingClientRect());
     return cactus.getBoundingClientRect()
   })
 
