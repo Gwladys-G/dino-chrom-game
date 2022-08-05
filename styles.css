@@ -73,3 +73,14 @@ h1{
   height: 30%;
   bottom: 0;
 }
+
+.settings{
+  color: #535353;
+  position: absolute;
+  left: 10vmin;
+  top: 1px;
+}
+
+.border{
+  border: 2px dotted blue;
+}
