@@ -1,4 +1,4 @@
-import { getCustomeProperty, incrementCustomProperty, setCustomProperty } from './updateCustomProperty.js'
+import { getCustomProperty, incrementCustomProperty, setCustomProperty } from './updateCustomProperty.js'
 
 const dinoElem = document.querySelector('[data-dino]')
 const JUMP_SPEED = 0.45
@@ -51,7 +51,7 @@ function handleJump(delta) {
   incrementCustomProperty(dinoElem, "--bottom", yVelocity * delta)
 
 
-  if ( getCustomeProperty(dinoElem,"--bottom") <= 0){
+  if ( getCustomProperty(dinoElem,"--bottom") <= 0){
     setCustomProperty(dinoElem, "--bottom", 0)
     isJumping = false
   }
