@@ -11,14 +11,14 @@ body {
   align-items: center;
   min-height: 100vh;
   border: 3px solid #535353;
+  color: #535353;
 }
 
 h1{
   color: #535353;
   position: absolute;
   font-size: 5vmin;
-  top: 5vmin;
-
+  top: 3vmin;
 }
 
 
@@ -33,9 +33,8 @@ h1{
 
 .score {
   position: absolute;
+  right: 5vmin;
   font-size: 3vmin;
-  right: 10vmin;
-  top: 1vmin;
   color: #535353;
 }
 
@@ -77,8 +76,12 @@ h1{
 .settings{
   color: #535353;
   position: absolute;
-  left: 10vmin;
-  top: 1px;
+  top: 20vmin;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 3vmin;
+
 }
 
 .border{
