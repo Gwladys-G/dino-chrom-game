@@ -1,4 +1,5 @@
 import { getCustomProperty, incrementCustomProperty, setCustomProperty } from "./updateCustomProperty.js"
+import { isEasy } from './script.js'
 
 const SPEED = .05
 const METEOR_INTERVAL_MIN = 5000
@@ -38,6 +39,9 @@ function createMeteor(){
   meteor.dataset.meteor = true
   meteor.src = "imgs/meteor.png"
   meteor.classList.add("meteor")
+  if (isEasy) {
+    meteor.classList.add("border")
+  }
   setCustomProperty(meteor, "--left", 100)
   worldElem.append(meteor)
 }

@@ -84,3 +84,11 @@ h1{
 .border{
   border: 2px dotted blue;
 }
+
+.meteor {
+  position: absolute;
+  left: calc(var(--left) * 1%);
+  height: 18%;
+  bottom: 132px;
+  transform: rotate(10deg);
+}

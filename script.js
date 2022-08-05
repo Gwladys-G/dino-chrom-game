@@ -1,6 +1,7 @@
 import { setupGround, updateGround } from './ground.js'
 import { setUpDino, updateDino, getDinoRect, setDinoLose } from './dino.js'
 import { setUpCactus, updateCactus, getCactusRecs } from './cactus.js'
+import { setUpMeteor, updateMeteor, getMeteorRecs } from './meteor.js'
 
 
 const WORLD_WIDTH = 100
@@ -20,6 +21,7 @@ document.addEventListener("keydown", handleStart, {once: true})
 let lastTime
 let speedScale
 let score = 0
+export let isEasy = false
 
 function update(time) {
   if (lastTime == null) {
@@ -31,6 +33,7 @@ function update(time) {
   updateGround(delta, speedScale)
   updateDino(delta, speedScale)
   updateCactus(delta, speedScale)
+  updateMeteor(delta, speedScale)
   updateSpeedScale(delta)
   updateScore(delta)
   if (checkLose()) return handleLose()
@@ -56,6 +59,7 @@ function handleStart(){
   setupGround()
   setUpDino()
   setUpCactus()
+  setUpMeteor()
   startScreen.classList.add("hide")
   window.requestAnimationFrame(update)
 }
@@ -74,9 +78,15 @@ function setPixelToWorldScale(){
 
 function checkLose(){
   const dinoRect = getDinoRect()
-  return getCactusRecs().some(rect =>
-    isCollision (rect, dinoRect)
+  return(
+    getCactusRecs().some(rect =>
+      isCollision (rect, dinoRect)
+    ) ||
+    getMeteorRecs().some(rect =>
+      isCollision (rect, dinoRect)
+    )
   )
+
 }
 
 function isCollision(rect1, Rect2){
@@ -93,5 +103,19 @@ function isCollision(rect1, Rect2){
     setTimeout(() => {
       document.addEventListener("keydown", handleStart, {once :true})
       startScreen.classList.remove("hide")
-    })
+    },1000)
+}
+
+gameMode.addEventListener('change', (e) => updateMode(e))
+
+function updateMode(event) {
+  const dinoElem = document.querySelector('[data-dino]')
+  if(gameMode.checked){
+    isEasy = true
+    dinoElem.classList.add("border")
+
+  } else {
+    isEasy = false
+    dinoElem.classList.remove("border")
+  };
 }

@@ -1,4 +1,5 @@
 import { getCustomProperty, incrementCustomProperty, setCustomProperty } from "./updateCustomProperty.js"
+import { isEasy } from './script.js'
 
 const SPEED = .05
 const CACTUS_INTERVAL_MIN = 500
@@ -38,6 +39,9 @@ function createCactus(){
   cactus.dataset.cactus = true
   cactus.src = "imgs/cactus.png"
   cactus.classList.add("cactus")
+  if (isEasy) {
+    cactus.classList.add("border")
+  }
   setCustomProperty(cactus, "--left", 100)
   worldElem.append(cactus)
 }
