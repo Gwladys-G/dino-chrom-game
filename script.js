@@ -11,7 +11,8 @@ const SPEED_SCALE_INCREASE =.00002
 const worldElem = document.querySelector('[data-world]');
 const scoreElem = document.querySelector('[data-score]');
 const startScreen = document.querySelector('[data-start-screen]');
-var gameMode = document.querySelector("input[name=mode]");
+const gameMode = document.querySelector("input[name=mode]");
+
 
 setPixelToWorldScale()
 window.addEventListener("resize",setPixelToWorldScale)
