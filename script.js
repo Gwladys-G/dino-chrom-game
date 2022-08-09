@@ -1,5 +1,5 @@
 import { setupGround, updateGround } from './ground.js'
-import { setUpDino, updateDino, getDinoRect, setDinoLose } from './dino.js'
+import { setUpDino, updateDino, getDinoRect, setDinoLose, dinoElem } from './dino.js'
 import { setUpCactus, updateCactus, getCactusRecs } from './cactus.js'
 import { setUpMeteor, updateMeteor, getMeteorRecs } from './meteor.js'
 
@@ -16,16 +16,30 @@ const gameSettings = document.getElementById("settings")
 const gameWheel = document.getElementById("wheel")
 const closeCross = document.getElementById("closeSettings")
 
+const borderMode = document.querySelector("input[name=borderMode]");
+const toggleCactus = document.querySelector("input[name=obsCactus]");
+const toggleMeteor = document.querySelector("input[name=obsMeteor]");
+const updatedGravity = document.querySelector("input[name=gravity]");
+
+
+updatedGravity.addEventListener("change", (e) => { updateGravity(e)} )
+
+function updateGravity(e){
+  gravityUpdate = e.target.value
+}
 
 setPixelToWorldScale()
 window.addEventListener("resize",setPixelToWorldScale)
 document.addEventListener("keydown", handleStart, {once: true})
 
+gameWheel.addEventListener('click', showSettings)
+closeCross.addEventListener('click', closeSettings)
 
 let lastTime
 let speedScale
 let score = 0
-export let isEasy = false
+export let isEasy = borderMode.checked
+let gravityUpdate = 0.0015
 
 function update(time) {
   if (lastTime == null) {
@@ -35,9 +49,9 @@ function update(time) {
   }
   const delta = time - lastTime
   updateGround(delta, speedScale)
-  updateDino(delta, speedScale)
-  updateCactus(delta, speedScale)
-  updateMeteor(delta, speedScale)
+  updateDino(delta, speedScale,gravityUpdate)
+  if (toggleCactus.checked) updateCactus(delta, speedScale)
+  if (toggleMeteor.checked) updateMeteor(delta, speedScale)
   updateSpeedScale(delta)
   updateScore(delta)
   if (checkLose()) return handleLose()
@@ -63,6 +77,7 @@ function handleStart(){
   setupGround()
   setUpDino()
   setUpCactus()
+  checkSettings()
   setUpMeteor()
   startScreen.classList.add("hide")
   gameWheel.classList.add("hide")
@@ -101,32 +116,17 @@ function isCollision(rect1, Rect2){
     rect1.right > Rect2.left &&
     rect1.bottom > Rect2.top
     )
-  }
-
-  function handleLose(){
-    setDinoLose()
-    setTimeout(() => {
-      document.addEventListener("keydown", handleStart, {once :true})
-      startScreen.classList.remove("hide")
-      gameWheel.classList.remove("hide")
-    },1000)
 }
 
-// gameMode.addEventListener('change', (e) => updateMode(e))
+function handleLose(){
+  setDinoLose()
+  setTimeout(() => {
+    document.addEventListener("keydown", handleStart, {once :true})
+    startScreen.classList.remove("hide")
+    gameWheel.classList.remove("hide")
+  },1000)
+}
 
-// function updateMode(event) {
-//   const dinoElem = document.querySelector('[data-dino]')
-//   if(gameMode.checked){
-//     isEasy = true
-//     dinoElem.classList.add("border")
-
-//   } else {
-//     isEasy = false
-//     dinoElem.classList.remove("border")
-//   };
-// }
-
-gameWheel.addEventListener('click', showSettings)
 
 function showSettings() {
   startScreen.classList.add("hide")
@@ -134,10 +134,28 @@ function showSettings() {
   gameSettings.classList.remove("hide")
 }
 
-closeCross.addEventListener('click', closeSettings)
 
 function closeSettings() {
   gameSettings.classList.add("hide")
   startScreen.classList.remove("hide")
   gameWheel.classList.remove("hide")
+}
+
+function checkSettings() {
+  if (toggleCactus.checked) {
+    document.querySelectorAll("[data-cactus]").forEach(cactus =>
+    cactus.remove()
+  )}
+  if (toggleMeteor.checked) {
+    document.querySelectorAll("[data-meteor]").forEach(meteor =>
+    meteor.remove()
+    )
+  }
+  if( borderMode.checked)  {
+    isEasy = true
+    dinoElem.classList.add("border")
+  } else {
+    isEasy = false
+    dinoElem.classList.remove("border")
+  };
 }

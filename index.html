@@ -21,16 +21,16 @@
       <div class= "obstacles">
           <div class="cactusOn">
             <label for="obsCactus">Cactus 🌵</label>
-            <input type="checkbox" name="obsCactus">
+            <input type="checkbox" name="obsCactus" checked="checked">
           </div>
           <div class="meteorOn">
             <label for="obsMeteor">Meteor <i class="fa-solid fa-meteor"></i></label>
-            <input type="checkbox" name="obsMeteor">
+            <input type="checkbox" name="obsMeteor" checked="checked">
           </div>
       </div>
       <div class="gravity">
           <label for="gravity">Gravity</label>
-          <input type="range" name="gravity">
+          <input type="range" name="gravity" min="0.0005" max="0.003" step="0.0001" value="0.0015">
       </div>
     </div>
     <div class="score" data-score>0</div>
