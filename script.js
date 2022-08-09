@@ -12,6 +12,9 @@ const worldElem = document.querySelector('[data-world]');
 const scoreElem = document.querySelector('[data-score]');
 const startScreen = document.querySelector('[data-start-screen]');
 const gameMode = document.querySelector("input[name=mode]");
+const gameSettings = document.getElementById("settings")
+const gameWheel = document.getElementById("wheel")
+const closeCross = document.getElementById("closeSettings")
 
 
 setPixelToWorldScale()
@@ -62,6 +65,7 @@ function handleStart(){
   setUpCactus()
   setUpMeteor()
   startScreen.classList.add("hide")
+  gameWheel.classList.add("hide")
   window.requestAnimationFrame(update)
 }
 
@@ -104,19 +108,36 @@ function isCollision(rect1, Rect2){
     setTimeout(() => {
       document.addEventListener("keydown", handleStart, {once :true})
       startScreen.classList.remove("hide")
+      gameWheel.classList.remove("hide")
     },1000)
 }
 
-gameMode.addEventListener('change', (e) => updateMode(e))
+// gameMode.addEventListener('change', (e) => updateMode(e))
 
-function updateMode(event) {
-  const dinoElem = document.querySelector('[data-dino]')
-  if(gameMode.checked){
-    isEasy = true
-    dinoElem.classList.add("border")
+// function updateMode(event) {
+//   const dinoElem = document.querySelector('[data-dino]')
+//   if(gameMode.checked){
+//     isEasy = true
+//     dinoElem.classList.add("border")
 
-  } else {
-    isEasy = false
-    dinoElem.classList.remove("border")
-  };
+//   } else {
+//     isEasy = false
+//     dinoElem.classList.remove("border")
+//   };
+// }
+
+gameWheel.addEventListener('click', showSettings)
+
+function showSettings() {
+  startScreen.classList.add("hide")
+  gameWheel.classList.add("hide")
+  gameSettings.classList.remove("hide")
+}
+
+closeCross.addEventListener('click', closeSettings)
+
+function closeSettings() {
+  gameSettings.classList.add("hide")
+  startScreen.classList.remove("hide")
+  gameWheel.classList.remove("hide")
 }

@@ -11,30 +11,32 @@
 </head>
 <body>
   <h1>My T-Rex Game</h1>
-  <i class="fa-solid fa-gear wheel" id="wheel"></i>
-  <div class="settings hide">
-    <div class= "mode">
-      <p>Show Borders</p>
-      <input type="checkbox">
-    </div>
-    <div class= "obstacles">
-      <div class="cactusOn">
-        <p>Cactus 🌵</p>
-        <input type="checkbox">
-      </div>
-      <div class="meteorOn">
-        <p>Meteor <i class="fa-solid fa-meteor"></i></p>
-        <input type="checkbox">
-      </div>
-    </div>
-    <div class="gravity">
-      <p>Gravity</p>
-      <input type="range" name="" id="">
-    </div>
-  </div>
   <div class="world" data-world>
+    <div class="settings hide" id="settings">
+      <p class="closeCross" id="closeSettings">X</p>
+      <div class= "mode">
+          <label for="borderMode">Show Borders</label>
+          <input type="checkbox" name="borderMode">
+      </div>
+      <div class= "obstacles">
+          <div class="cactusOn">
+            <label for="obsCactus">Cactus 🌵</label>
+            <input type="checkbox" name="obsCactus">
+          </div>
+          <div class="meteorOn">
+            <label for="obsMeteor">Meteor <i class="fa-solid fa-meteor"></i></label>
+            <input type="checkbox" name="obsMeteor">
+          </div>
+      </div>
+      <div class="gravity">
+          <label for="gravity">Gravity</label>
+          <input type="range" name="gravity">
+      </div>
+    </div>
     <div class="score" data-score>0</div>
-    <div class="start-screen" data-start-screen>Press Any Key To Start</div>
+    <div class="start-screen" data-start-screen>Press Any Key To Start
+      <div class="fa-solid fa-gear wheel" id="wheel" ></div>
+    </div>
     <img src="imgs/ground.png" class="ground" data-ground alt="">
     <img src="imgs/ground.png" class="ground" data-ground alt="">
     <img src="imgs/dino-stationary.png" alt="" class="dino" data-dino>

@@ -21,19 +21,23 @@ h1{
   top: 3vmin;
 }
 
+
+.start-screen{
+  color: #535353;
+}
+
 .wheel{
-  position: absolute;
-  top: 15vh;
   font-size: 3vh;
+  border: .2px solid #706f6f;
+  padding: 5px;
+  right: 50%;
+
 }
 
 .wheel:hover{
   color: #706f6f;
   font-size: 4vh;
-}
-
-.start-screen{
-  color: #535353;
+  cursor: pointer;
 }
 
 .world {
@@ -87,33 +91,42 @@ h1{
   color: #535353;
   background-color: #f7f7f7;
   box-shadow: 1px 1px 3px #eceaea;
-  border: 1px solid #f0eded;
+  border: 10px solid #979696;
+  width: 40%;
   position: absolute;
-  font-size: 2vmin;
-  padding: 15px;
-  width: 30vh;
-  top: 15px;
-  right: 150px;
-
+  font-size: 4vmin;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding-top: 2vw;
+  padding-bottom: 2vw;
 }
 
-.mode, .cactusOn, .meteorOn{
+.closeCross{
+  position: absolute;
+  top: 5px;
+  right: 6px;
+  margin: 0;
+}
+
+.closeCross:hover{
+color: rgb(46, 44, 44);
+background-color: #e7e2e2;
+border: 1px solid rgb(37, 35, 35);
+}
+
+.mode, .cactusOn, .meteorOn, .gravity{
   display: flex;
   justify-content: center;
 }
 
-.obstacles p{
-  margin: 0;
-}
-.gravity{
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+.mode {
+margin-bottom: 2vw;
 }
 
-.gravity p{
-  margin: 0;
-  margin-top: 12px;
+.gravity{
+  margin-top: 2vw;
+
 }
 
 .border{
@@ -125,4 +138,8 @@ h1{
   left: calc(var(--left) * 1%);
   height: 18%;
   bottom: 132px;
+}
+
+.wrapper{
+  margin: auto;
 }
