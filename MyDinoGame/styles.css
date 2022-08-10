@@ -21,6 +21,10 @@ h1{
   top: 3vmin;
 }
 
+  .world {
+    overflow: hidden;
+    position: relative;
+  }
 
 .start-screen{
   color: #535353;
@@ -40,10 +44,6 @@ h1{
   cursor: pointer;
 }
 
-.world {
-  overflow: hidden;
-  position: relative;
-}
 
 .score {
   position: absolute;
@@ -60,9 +60,6 @@ h1{
   transform: translate(-50%, -50%);
 }
 
-.hide {
-  display: none;
-}
 
 .ground {
   --left: 0;
@@ -110,7 +107,7 @@ h1{
 }
 
 .closeCross:hover{
-color: rgb(46, 44, 44);
+  color: rgb(46, 44, 44);
 background-color: #e7e2e2;
 border: 1px solid rgb(37, 35, 35);
 }
@@ -129,9 +126,6 @@ margin-bottom: 2vw;
 
 }
 
-.border{
-  border: 2px dotted blue;
-}
 
 .meteor {
   position: absolute;
@@ -143,3 +137,11 @@ margin-bottom: 2vw;
 .wrapper{
   margin: auto;
 }
+
+.border{
+  border: 2px dotted blue;
+}
+
+  .hide {
+    display: none;
+  }

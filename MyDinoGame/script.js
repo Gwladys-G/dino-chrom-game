@@ -132,6 +132,7 @@ function showSettings() {
   startScreen.classList.add("hide")
   gameWheel.classList.add("hide")
   gameSettings.classList.remove("hide")
+  document.removeEventListener("keydown", handleStart, {once: true})
 }
 
 
@@ -139,6 +140,7 @@ function closeSettings() {
   gameSettings.classList.add("hide")
   startScreen.classList.remove("hide")
   gameWheel.classList.remove("hide")
+  document.addEventListener("keydown", handleStart, {once: true})
 }
 
 function checkSettings() {
